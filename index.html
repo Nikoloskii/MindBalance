@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBalance Pro - Wellness Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <div class="circle c3"></div>
+    </div>
+
+    <div class="main-wrapper">
+        <!-- LEFT HBSC PANEL -->
+        <div class="hbsc-left-panel">
+            <div class="hbsc-panel-content">
+                <div class="hbsc-panel-header">
+                    <span>📊</span>
+                    <h3>HBSC Студија</h3>
+                </div>
+                
+                <div class="hbsc-panel-section">
+                    <h4>🌍 Што е HBSC?</h4>
+                    <p>
+                        <strong>HBSC</strong> е меѓународна студија која се спроведува на секои 4 години 
+                        во повеќе од <strong>50 земји</strong>. Поддржана е од 
+                        <strong>Светската Здравствена Организација (WHO)</strong> и ги истражува 
+                        здравствените навики, психолошката добросостојба и социјалните односи 
+                        на младите од <strong>11 до 15 години</strong>.
+                    </p>
+                </div>
+
+                <div class="hbsc-panel-section">
+                    <h4>🇲🇰 HBSC во Македонија</h4>
+                    <p>
+                        Се спроведува од <strong>2002 година</strong> од страна на 
+                        <strong>Институтот за јавно здравје</strong>. Последните податоци се од 
+                        <strong>2022 година</strong>.
+                    </p>
+                </div>
+
+                <div class="hbsc-panel-section">
+                    <h4>📈 Клучни наоди (2022)</h4>
+                    <div class="hbsc-mini-findings">
+                        <div class="mini-finding">
+                            <span class="mini-number">30%</span>
+                            <span>висок стрес</span>
+                        </div>
+                        <div class="mini-finding">
+                            <span class="mini-number">25%</span>
+                            <span>проблеми со спиење</span>
+                        </div>
+                        <div class="mini-finding">
+                            <span class="mini-number">20%</span>
+                            <span>булинг</span>
+                        </div>
+                        <div class="mini-finding">
+                            <span class="mini-number">40%</span>
+                            <span>не се активни</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hbsc-panel-section" style="border-color: rgba(52, 211, 153, 0.2);">
+                    <h4 style="color: #34d399;">💡 MindBalance</h4>
+                    <p style="font-size: 12px;">
+                        Инспириран од HBSC податоците за подобрување на 
+                        менталното здравје на младите.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CENTER CONTENT -->
+        <div class="center-content">
+            <div class="container">
+                <!-- Header -->
+                <div class="header">
+                    <div class="logo" id="logoReset">
+                        <span class="logo-icon">🧠</span>
+                        <h1>MindBalance Pro</h1>
+                    </div>
+                    <p class="subtitle">Твојот дигитален водич за ментално здравје</p>
+                </div>
+
+                <!-- Navigation Tabs (само 3 таба) -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="mood" onclick="switchTab('mood')">
+                        <span>😊</span> Расположение
+                    </button>
+                    <button class="tab-btn" data-tab="chat" onclick="switchTab('chat')">
+                        <span>💬</span> Разговор
+                    </button>
+                    <button class="tab-btn" data-tab="history" onclick="switchTab('history')">
+                        <span>📈</span> Историја
+                    </button>
+                </div>
+
+                <!-- TAB 1: Mood Checker -->
+                <div id="tab-mood" class="tab-content active">
+                    <div class="input-section">
+                        <label for="name">👤 Внеси го твоето име</label>
+                        <input type="text" id="name" placeholder="На пример: Ана" class="name-input">
+                    </div>
+
+                    <div class="mood-section">
+                        <p class="mood-label">Како се чувствуваш денес?</p>
+                        <div class="mood-buttons">
+                            <button onclick="showAdvice('good')" class="mood-btn good">
+                                <span class="emoji">😊</span>
+                                <span class="mood-text">Добро</span>
+                            </button>
+                            <button onclick="showAdvice('okay')" class="mood-btn okay">
+                                <span class="emoji">😐</span>
+                                <span class="mood-text">Океј</span>
+                            </button>
+                            <button onclick="showAdvice('bad')" class="mood-btn bad">
+                                <span class="emoji">😔</span>
+                                <span class="mood-text">Лошо</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="result" class="result-card hidden">
+                        <div class="result-content">
+                            <div class="result-emoji" id="resultEmoji">🌟</div>
+                            <h2 id="resultTitle">Здраво!</h2>
+                            <p id="resultText">Твојот совет тука</p>
+                        </div>
+                    </div>
+
+                    <div class="challenge-section">
+                        <h3>🎯 Денешен предизвик</h3>
+                        <div id="dailyChallenge" class="challenge-card">
+                            <p id="challengeText">Внеси го твоето име и кликни на расположение за да добиеш предизвик!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Chatbot -->
+                <div id="tab-chat" class="tab-content">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <span>🤖 Wellness Assistant</span>
+                            <span class="chat-status">🟢 Online</span>
+                        </div>
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message bot-message">
+                                <div class="message-content">
+                                    Здраво! 👋 Јас сум твојот дигитален асистент за ментално здравје. <br>
+                                    Пиши ми што те мачи или како се чувствуваш!<br>
+                                    <small style="opacity:0.6;">💡 Можеш да прашаш за: стрес, анксиозност, спиење, булинг, самодоверба, мотивација...</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-input-area">
+                            <input type="text" id="chatInput" placeholder="Напиши нешто..." onkeypress="handleChatKey(event)">
+                            <button onclick="sendChatMessage()" class="send-btn">📤</button>
+                        </div>
+                        <div class="quick-replies">
+                            <button onclick="quickReply('Се чувствувам анксиозно')" class="quick-btn">😰 Анксиозност</button>
+                            <button onclick="quickReply('Имам стрес на училиште')" class="quick-btn">📚 Стрес</button>
+                            <button onclick="quickReply('Немам мотивација')" class="quick-btn">😴 Мотивација</button>
+                            <button onclick="quickReply('Проблеми со спиење')" class="quick-btn">😴 Спиење</button>
+                            <button onclick="quickReply('Самодоверба')" class="quick-btn">💪 Самодоверба</button>
+                            <button onclick="quickReply('Булинг')" class="quick-btn">🚫 Булинг</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: History -->
+                <div id="tab-history" class="tab-content">
+                    <div class="history-section">
+                        <h3>📊 Мојата историја на расположенија</h3>
+                        
+                        <div id="dailyEntries" class="daily-entries">
+                            <p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px;">
+                                Нема записи. Кликни на расположение за да започнеш!
+                            </p>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-item good-stat">
+                                <span class="stat-emoji">😊</span>
+                                <span class="stat-label">Добро</span>
+                                <span class="stat-number" id="goodCount">0</span>
+                            </div>
+                            <div class="stat-item okay-stat">
+                                <span class="stat-emoji">😐</span>
+                                <span class="stat-label">Океј</span>
+                                <span class="stat-number" id="okayCount">0</span>
+                            </div>
+                            <div class="stat-item bad-stat">
+                                <span class="stat-emoji">😔</span>
+                                <span class="stat-label">Лошо</span>
+                                <span class="stat-number" id="badCount">0</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-bars">
+                            <div class="progress-item">
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar good-bar" id="goodBar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar okay-bar" id="okayBar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar bad-bar" id="badBar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quote-section">
+                            <h3>💭 Денешен цитат</h3>
+                            <div id="dailyQuote" class="quote-card">
+                                <p id="quoteText">"Твоето ментално здравје е приоритет. Грижи се за себе."</p>
+                                <p id="quoteAuthor">- MindBalance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <p>💡 Инспирирано од HBSC податоците • Ментално здравје на младите</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT HBSC PANEL -->
+        <div class="hbsc-right-panel">
+            <div class="hbsc-panel-content">
+                <div class="hbsc-panel-header">
+                    <span>🔗</span>
+                    <h3>Корисни линкови</h3>
+                </div>
+
+                <a href="https://hbsc.org/" target="_blank" class="hbsc-panel-link">
+                    <span>🌐</span>
+                    <div>
+                        <strong>HBSC International</strong>
+                        <span>Официјална страница</span>
+                    </div>
+                    <span>→</span>
+                </a>
+
+                <a href="https://hbsc.org/data/" target="_blank" class="hbsc-panel-link">
+                    <span>📊</span>
+                    <div>
+                        <strong>HBSC Data Platform</strong>
+                        <span>Интерактивни податоци</span>
+                    </div>
+                    <span>→</span>
+                </a>
+
+                <a href="https://www.euro.who.int/en/health-topics/Life-stages/child-and-adolescent-health/health-behaviour-in-school-aged-children-hbsc" target="_blank" class="hbsc-panel-link">
+                    <span>📄</span>
+                    <div>
+                        <strong>WHO Извештаи</strong>
+                        <span>Публикации од WHO</span>
+                    </div>
+                    <span>→</span>
+                </a>
+
+                <a href="https://www.iph.mk/" target="_blank" class="hbsc-panel-link">
+                    <span>🏥</span>
+                    <div>
+                        <strong>Институт за ЈЗ - МК</strong>
+                        <span>Македонски податоци</span>
+                    </div>
+                    <span>→</span>
+                </a>
+
+                <div class="hbsc-panel-divider"></div>
+
+                <div class="hbsc-panel-section">
+                    <h4>📚 Ресурси</h4>
+                    <ul class="hbsc-resource-list">
+                        <li>📘 Извештај за МК 2022</li>
+                        <li>📗 Водич за ментално здравје</li>
+                        <li>📕 Програма против булинг</li>
+                    </ul>
+                </div>
+
+                <div class="hbsc-panel-section" style="border-color: rgba(52, 211, 153, 0.2);">
+                    <h4 style="color: #34d399;">📱 Следете не</h4>
+                    <div class="hbsc-social-grid">
+                        <a href="#" onclick="showNotification('🐦 Следете не на Twitter!')" class="hbsc-social-btn">🐦</a>
+                        <a href="#" onclick="showNotification('📘 Следете не на Facebook!')" class="hbsc-social-btn">📘</a>
+                        <a href="#" onclick="showNotification('📸 Следете не на Instagram!')" class="hbsc-social-btn">📸</a>
+                        <a href="#" onclick="showNotification('💼 Следете не на LinkedIn!')" class="hbsc-social-btn">💼</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
